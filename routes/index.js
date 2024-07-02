@@ -7,6 +7,6 @@ router.get('/404', homeController.notFound)
 
 router.use('/users', require('./users'));
 router.use('/products', require('./product'))
-
+router.use('/admin', require('./admin'))
 
 module.exports = router;

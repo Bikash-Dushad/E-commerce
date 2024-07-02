@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const dbURI = 'mongodb://127.0.0.1:27017/ECommerceFinal'; // Replace with your MongoDB connection URI
+const dbURI = 'mongodb://127.0.0.1:27017/ECommerceFinalProgram'; // Replace with your MongoDB connection URI
 
 mongoose.connect(dbURI)
     .then(() => {

@@ -21,15 +21,34 @@ module.exports.addProducts = async (req, res) => {
         }
 
         const product = await Product.create(productData);
-
-        
-        res.status(200).send({ success: true, message: "Product created successfully", product });
+        return res.redirect('back')
     } catch (error) {
         console.log(error);
-        res.status(500).send({ success: false, message: 'Error in add product API' });
+        return res.redirect('back')
     }
 };
 
+// All product
+module.exports.getAllProducts = async (req, res)=>{
+    try {
+        const allProducts = await Product.find({});
+        if(!allProducts){
+            console.log("No Product is there")
+            return res.status(404).send({success: false, message:" Product is not found"})
+        }
+        res.status(200).send({success: true, message: " All product are here ", allProducts})
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({success: false, message: "error in get all Product api", error})
+    }
+}
+
+module.exports.updateProductPage = async (req, res)=>{
+    const product = await Product.find({})
+    return res.render("updateProduct",{
+        product: product
+})
+}
 
 //update the product
 module.exports.updateProduct = async (req, res)=>{
@@ -65,6 +84,10 @@ module.exports.updateProduct = async (req, res)=>{
     }
 }
 
+
+
+
+//remove product
 module.exports.deleteProduct = async (req, res)=>{
     try {
         fs.unlink(`uploads/$(product.image)`, ()=>{})

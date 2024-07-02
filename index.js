@@ -2,7 +2,7 @@
 const express = require('express');
 const port = 7000;
 const app = express();
-
+// const cookieparser = require('cookie-parser')
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
 const db = require('./config/mongoose');
@@ -23,6 +23,7 @@ const MongoStore = require('connect-mongo');
 // layouts for ejs
 app.use(expressLayouts);
 app.use(bodyParser.urlencoded({extended:false}));
+// app.use(cookieparser())
 
 // set up the view engine
 app.set('view engine', 'ejs');
