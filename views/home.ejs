@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/css/home.css">
+ 
+<!-- header  -->
+<%- include('_header'); %>
+
+
+<% if(!locals.user) { %>
+    <p>signin</p>
+<% }
+
+else if(locals.user && locals.products.length==0) { %>
+<%= products %>
+<p>welcome</p>
+<% } %>
