@@ -42,7 +42,9 @@ allProducts.addEventListener('click', async () => {
                         <td>${product.desc}</td>
                         <td>$${product.price}</td>
                         <td>${product.sizes.join(', ')}</td>
-                        <td><a href="/products/updateProductPage/${product._id}">Update</a>
+                        <td><a href="/products/updateProductPage/${product._id}">Update</a> 
+                        <a href="/products/deleteProduct/${product._id}">Delete</a>
+                        </td>
                     </tr>
                 `;
                 productsTableBody.innerHTML += productRow;

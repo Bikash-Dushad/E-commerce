@@ -96,11 +96,13 @@ module.exports.deleteProduct = async (req, res)=>{
         fs.unlink(`uploads/$(product.image)`, ()=>{})
         const product = await Product.findByIdAndDelete(req.params.id)
         if(!product){
-            return res.status(404).send({success: false, message: " product not found"})
+            console.log("product not found")
+            return res.redirect("back")
         }
-        res.status(200).send({success: true, message: " product deleted successfully"})
+        console.log("Product deleted successfully")
+        return res.redirect("back")
     } catch (error) {
         console.log(error)
-        res.status(500).send({success: false, message: "Error in delete product api", error})
+        return res.redirect("back")
     }
 }

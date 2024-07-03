@@ -18,6 +18,6 @@ router.get('/getAllProduct', productController.getAllProducts)
 router.get("/updateProductPage/:id", productController.updateProductPage)
 router.post('/updateProduct/:id', upload.single('image'), productController.updateProduct)
 
-router.post('/deleteProduct/:id',productController.deleteProduct)
+router.get('/deleteProduct/:id',productController.deleteProduct)
 
 module.exports = router;
