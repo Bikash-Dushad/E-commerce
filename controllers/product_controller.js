@@ -34,20 +34,22 @@ module.exports.getAllProducts = async (req, res)=>{
         const allProducts = await Product.find({});
         if(!allProducts){
             console.log("No Product is there")
-            return res.status(404).send({success: false, message:" Product is not found"})
+            return res.status(404).send({success: false, message: " product not found"});
         }
-        res.status(200).send({success: true, message: " All product are here ", allProducts})
+        console.log(allProducts)
+        return res.status(200).send({success: true, data: allProducts});
     } catch (error) {
         console.log(error)
-        res.status(500).send({success: false, message: "error in get all Product api", error})
+        return res.status(500).send({success: false, message: "error in get all notes", error});
     }
 }
 
 module.exports.updateProductPage = async (req, res)=>{
-    const product = await Product.find({})
-    return res.render("updateProduct",{
-        product: product
-})
+    const product = await Product.findById(req.params.id); // Fetch the product by ID
+    return res.render("update_product", {
+        title: "Update product",
+        product : product
+    })
 }
 
 //update the product
@@ -55,7 +57,8 @@ module.exports.updateProduct = async (req, res)=>{
     try {
         const product = await Product.findById(req.params.id)
         if(!product){
-            return res.status(404).send({success: false, message: " product not found"})
+            console.log("product not found")
+            return res.redirect('back')
         }
         if(req.file){
             fs.unlink(`uploads/${product.image}`, (err) => {
@@ -76,11 +79,11 @@ module.exports.updateProduct = async (req, res)=>{
         }
 
         await product.save();
-        res.status(200).send({ success: true, message: "Product updated successfully" });
+        return res.redirect('/admin/adminPage')
 
     } catch (error) {
         console.log(error)
-        res.status(500).send({success: false, message: " error in update product api"})
+        return res.redirect('back')
     }
 }
 

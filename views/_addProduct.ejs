@@ -1,34 +1,37 @@
-<h1>Add Product</h1>
+<link rel="stylesheet" href="/css/add_products.css">
+
+<button id="showFormButton">Add Product</button>
+    
+<div id="productForm">
+    <h1>Add Product</h1>
     <form action="/products/addProduct" method="post" enctype="multipart/form-data">
-        <div>
-            <label for="name">Product Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div>
-            <label for="desc">Description:</label>
-            <textarea id="desc" name="desc" required></textarea>
-        </div>
-        <div>
-            <label for="price">Price:</label>
-            <input type="text" id="price" name="price" value="99">
-        </div>
-        <div>
-            <label for="image">Image:</label>
-            <input type="file" id="image" name="image" required>
-        </div>
-        <div>
-            <label for="category">Category:</label>
-            <input type="text" id="category" name="category" required>
-        </div>
-        <div>
-            <label for="sizes">Sizes:</label>
-            <select id="sizes" name="sizes" multiple>
-                <option value="M">M</option>
-                <option value="XL">XL</option>
-                <option value="S">S</option>
-            </select>
-        </div>
-        <div>
-            <button type="submit">Add Product</button>
-        </div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Size</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><input type="text" id="name" name="name" required></td>
+                <td><textarea id="desc" name="desc" required></textarea></td>
+                <td><input type="text" id="price" name="price" value="99"></td>
+                <td><input type="file" id="image" name="image" required></td>
+                <td><input type="text" id="category" name="category" required></td>
+                <td>
+                    <select id="sizes" name="sizes" multiple>
+                        <option value="M">M</option>
+                        <option value="XL">XL</option>
+                        <option value="S">S</option>
+                    </select>
+                </td>
+                <td><button type="submit">Add Product</button></td>
+            </tr>
+        </table>
     </form>
+</div>
+
+<script src="/js/add_products.js"></script>

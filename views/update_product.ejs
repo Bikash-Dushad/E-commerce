@@ -1,0 +1,30 @@
+<div id="updateProducts"></div>
+
+<form action="/products/updateProduct/<%= product._id %>" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Category</th>
+            <th>Size</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><input type="text" id="name" name="name" value="<%= product.title %>" required></td>
+            <td><textarea id="desc" name="desc" required><%= product.title %></textarea></td>
+            <td><input type="text" id="price" name="price" value="<%= product.title %>" value="99"></td>
+            <td><input type="file" id="image" name="image" value="<%= product.title %>" required></td>
+            <td><input type="text" id="category" name="category" value="<%= product.title %>" required></td>
+            <td>
+                <select id="sizes" name="sizes" value="<%= product.title %>" multiple>
+                    <option value="M">M</option>
+                    <option value="XL">XL</option>
+                    <option value="S">S</option>
+                </select>
+            </td>
+            <td><button type="submit">update Product</button></td>
+        </tr>
+    </table>
+</form>
