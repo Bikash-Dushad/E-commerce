@@ -1,24 +1,28 @@
 <link rel="stylesheet" href="/css/header.css">
 
-<div class="nav">
-    <div class="title"> 
-        <a href="/">Home</a>
-    </div>
-    <% if (locals.user){ %>
-        <div class="userPresent">
-            <div class="nameOfUser"><%= user.name%>  </div>
-            <hr>
-            <div class="logOut"> <a href="/users/sign-out" > <i class="fa-solid fa-arrow-right-from-bracket" style="color: #e9f2ff;"></i> </a> </div>
-        </div>
-        <%} else { %>
-            <div class="noUser">
-                <ul>
-                    <li> <a href="/users/sign-in"> Sign In </a> </li>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Orders</a></li>
+            <li><a href="#">Cart</a></li>
+            <li class="user-info"><% if (locals.user){ %>
+                <div class="userPresent">
+                    <div class="nameOfUser"><%= user.name%>  </div>
                     <hr>
-                    <li> <a href="/users/sign-up"> Sign Up </a> </li>
-                </ul>
-            </div>
-        
-        <%}%>   
-
-</div>
+                    <div class="logOut"> <a href="/users/sign-out" > <i class="fa-solid fa-arrow-right-from-bracket" style="color: #e9f2ff;"></i> </a> </div>
+                </div>
+                <%} else { %>
+                    <div class="noUser">
+                        <ul>
+                            <li> <a href="/users/sign-in"> Sign In </a> </li>
+                            <hr>
+                            <li> <a href="/users/sign-up"> Sign Up </a> </li>
+                        </ul>
+                    </div>
+                
+                <%}%> 
+            </li>
+        </ul>
+    </nav>
+</header>

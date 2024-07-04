@@ -3,10 +3,20 @@
 <html>
 
 <head>
-    <title><%= title%></title>
+    <title>
+        <%= title%>
+    </title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    </style>
     <!-- noty.js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
     <!-- awesome fonts -->
     <script src="https://kit.fontawesome.com/f383b6eabf.js" crossorigin="anonymous"></script>
 </head>
@@ -16,27 +26,27 @@
 
     <main id="layout-main">
         <%- body %>
-        
 
-    <script>
-        <% if(flash.success && flash.success.length>0) {%>
-            new Noty({
-                theme : 'sunset',
-                text: '<%=flash.success%>',
-                layout: 'bottomRight',
-                timeout:1500
-            }).show()
-        <% } %>
-        <% if(flash.error && flash.error.length>0) {%>
-            new Noty({
-                theme : 'sunset',
-                text: '<%=flash.error%>',
-                type: 'error',
-                layout: 'bottomRight',
-                timeout:1500
-            }).show()
-        <% } %>
-    </script>
+
+            <script>
+        <% if (flash.success && flash.success.length > 0) {%>
+                    new Noty({
+                        theme: 'sunset',
+                        text: '<%=flash.success%>',
+                        layout: 'bottomRight',
+                        timeout: 1500
+                    }).show()
+                    <% } %>
+        <% if (flash.error && flash.error.length > 0) {%>
+                    new Noty({
+                        theme: 'sunset',
+                        text: '<%=flash.error%>',
+                        type: 'error',
+                        layout: 'bottomRight',
+                        timeout: 1500
+                    }).show()
+                    <% } %>
+            </script>
 
 </body>
 

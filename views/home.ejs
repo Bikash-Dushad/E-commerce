@@ -1,14 +1,25 @@
-<link rel="stylesheet" href="/css/home.css">
  
 <!-- header  -->
 <%- include('_header'); %>
+<link rel="stylesheet" href="/css/home.css">
 
+<main>
+    <% if(!locals.user) { %>
+    <% }else if(locals.user) { %>
+        <div class="search-container">
+            <input type="text" placeholder="Search" />
+            <button>Search</button>
+        </div>
+        <div class="products-grid">
+            <% product.forEach(product => { %>
+                <div class="product-card">
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
+                    <p><%= product.name %></p>
+                    <p><%= product.price %></p>
+                </div>
+            <% }); %>
+            
+        </div>
 
-<% if(!locals.user) { %>
-    <p>signin</p>
-<% }
-
-else if(locals.user && locals.products.length==0) { %>
-<%= products %>
-<p>welcome</p>
-<% } %>
+    <%} %>
+</main>
