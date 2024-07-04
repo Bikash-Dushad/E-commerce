@@ -36,7 +36,7 @@ allProducts.addEventListener('click', async () => {
             data.data.forEach(product => {
                 const productRow = `
                     <tr>
-                        <td><img src="${product.image}" alt="${product.name}" /></td>
+                        <td><img src="/uploads/${product.image}" alt="${product.name}" width=30px height=30px /></td>
                         <td>${product.name}</td>
                         <td>${product.category}</td>
                         <td>${product.desc}</td>

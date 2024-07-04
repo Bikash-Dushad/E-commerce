@@ -6,6 +6,8 @@ const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
 const db = require('./config/mongoose');
+const path = require('path');
+
 
 // require connect-flash
 const flash = require('connect-flash');
@@ -30,6 +32,7 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 // app.use(express.static('./assets')); 
 app.use(express.static(__dirname+'/assets'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 //mongo store is used to store the session cookie
 app.use(session({
