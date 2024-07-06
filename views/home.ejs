@@ -13,9 +13,11 @@
         <div class="products-grid">
             <% product.forEach(product => { %>
                 <div class="product-card">
+                    <a href="/products/singleProductDetails/<%= product._id %>">
                     <img src="/uploads/<%= product.image %>" alt="<%= product.name %>">
                     <p><%= product.name %></p>
                     <p><%= product.price %></p>
+                    </a>
                     <a href="/cart/addToCart?id=<%= product._id %>&user=<%= user._id %>">Add To Cart</a>
                 </div>
             <% }); %>

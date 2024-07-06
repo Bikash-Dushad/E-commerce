@@ -44,6 +44,30 @@ module.exports.getAllProducts = async (req, res)=>{
     }
 }
 
+// Controller function to get single product details
+module.exports.getSingleProductDetails = async (req, res) => {
+    const productId = req.params.id;
+
+    try {
+        // Fetch the product details by ID
+        const product = await Product.findById(productId);
+
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        // Render a view to display product details (you can customize this part based on your frontend setup)
+        res.render('product_details', { 
+            product,
+            title: "Product details",
+         });
+    } catch (error) {
+        console.error('Error fetching product details:', error);
+        res.status(500).json({ error: 'Failed to fetch product details' });
+    }
+};
+
+
 module.exports.updateProductPage = async (req, res)=>{
     const product = await Product.findById(req.params.id); // Fetch the product by ID
     return res.render("update_product", {
