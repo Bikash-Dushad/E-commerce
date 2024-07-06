@@ -3,9 +3,9 @@ const router = express.Router();
 const homeController = require('../controllers/home_controller');
 
 router.get('/', homeController.home);
-router.get('/404', homeController.notFound)
 
 router.use('/users', require('./users'));
+router.use('/cart', require('./userCart'))
 router.use('/products', require('./product'))
 router.use('/admin', require('./admin'))
 
