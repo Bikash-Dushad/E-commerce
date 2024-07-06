@@ -1,11 +1,17 @@
+<link rel="stylesheet" href="/css/single_product.css">
 <header>
     <%- include('_header'); %>
 </header>
 <main>
     <div class="product-details">
         <img src="/uploads/<%= product.image %>" alt="<%= product.name %>">
-        <h1><%= product.name %></h1>
-        <p>Price: <%= product.price %></p>
-        <p>Description: <%= product.description %></p>
+        <div class="pcsd">
+            <h1><%= product.name %></h1>
+            <p>Price: <%= product.price %></p>
+            <p>category: <%= product.category %></p>
+            <p>Size <%= product.sizes %></p>
+            <p>Description: <%= product.desc %></p>
+            <a href="/cart/addToCart?id=<%= product._id %>&user=<%= user._id %>">Add To Cart</a>
+        </div>
     </div>
 </main>

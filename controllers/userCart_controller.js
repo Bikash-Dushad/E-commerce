@@ -40,3 +40,10 @@ module.exports.addToCart = async (req, res) => {
         return res.redirect('back')
     }
 };
+
+//display product added to cart
+module.exports.userCart = async (req, res)=>{
+    return res.render("cart", {
+        title: "cart"
+    })
+}
