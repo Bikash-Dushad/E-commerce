@@ -48,11 +48,6 @@ module.exports.getCart = async (req, res) => {
         // Find the userCart document for the user and populate the products field
         const cart = await userCart.findOne({ user: userId }).populate('products');
 
-        if (!cart) {
-            return res.status(404).json({ error: 'Cart not found' });
-        }
-
-        // Render a view to display cart details (you can customize this part based on your frontend setup)
         res.render('cart', {
             title: "Cart",
             cart: cart

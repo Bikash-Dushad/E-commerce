@@ -7,6 +7,7 @@ router.get('/', homeController.home);
 router.use('/users', require('./users'));
 router.use('/cart', require('./userCart'))
 router.use('/products', require('./product'))
+router.use('/orders', require('./orders'))
 router.use('/admin', require('./admin'))
 
 module.exports = router;

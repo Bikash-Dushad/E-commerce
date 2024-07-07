@@ -13,21 +13,33 @@
                     <th>Product Image</th>
                     <th>Product Name</th>
                     <th>Price</th>
-                    <th>action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
+                <% let totalPrice = 0; %>
                 <% cart.products.forEach(product => { %>
+                    <% totalPrice += product.price; %>
                     <tr>
                         <td>
                             <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" style="width: 100px; height: auto;">
                         </td>
                         <td><%= product.name %></td>
                         <td><%= product.price %></td>
-                        <td><a href="/cart/deleteFromCart?userId=<%= user._id %>&productId=<%= product._id %>">Delete</a></td>
+                        <td>
+                            <a href="/cart/deleteFromCart?userId=<%= user._id %>&productId=<%= product._id %>">Delete</a>
+                        </td>
                     </tr>
                 <% }); %>
+                <tr>
+                    <td colspan="2"><strong>Total Price:</strong></td>
+                    <td colspan="2"><strong><%= totalPrice %></strong></td>
+                </tr>
             </tbody>
         </table>
+        <form action="/orders/placeOrder" method="post" style="display:inline;">
+            <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
+            <button type="submit">Order</button>
+        </form>
     <% } %>
 </div>
