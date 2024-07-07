@@ -65,30 +65,23 @@ module.exports.getCart = async (req, res) => {
 
 // Deleting from cart
 module.exports.deleteFromCart = async (req, res) => {
-    const userId = req.query.userId; // Retrieve user ID from query parameter
-    const productId = req.query.productId; // Retrieve product ID from query parameter
+    const userId = req.query.userId;
+    const productId = req.query.productId;
 
     try {
-        // Find the userCart document for the user
         let cart = await userCart.findOne({ user: userId });
-
         if (!cart) {
             return res.status(404).json({ error: 'Cart not found' });
         }
-
         // Find index of product to remove
         const indexToRemove = cart.products.findIndex(product => product.toString() === productId);
-
         if (indexToRemove === -1) {
             return res.status(404).json({ error: 'Product not found in cart' });
         }
-
         // Remove only the first occurrence of the product from the cart
         cart.products.splice(indexToRemove, 1);
-
         await cart.save();
-
-        res.redirect('back'); // Redirect to the cart page after deleting the product
+        res.redirect('back');
     } catch (error) {
         console.error('Error deleting product from cart:', error);
         res.status(500).json({ error: 'Failed to delete product from cart' });

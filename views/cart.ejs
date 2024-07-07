@@ -1,34 +1,33 @@
+<link rel="stylesheet" href="/css/cart.css">
+
 <%- include('_header'); %>
 <h1>Welcome to Cart</h1>
 
-<main>
-    <h1>Shopping Cart</h1>
-    <div class="cart-items">
-        <% if (cart.products.length === 0) { %>
-            <p>Your cart is empty.</p>
-        <% } else { %>
-            <table>
-                <thead>
+<div class="cart-items">
+    <% if (cart.products.length === 0) { %>
+        <p>Your cart is empty.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Image</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cart.products.forEach(product => { %>
                     <tr>
-                        <th>Product Image</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>action</th>
+                        <td>
+                            <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" style="width: 100px; height: auto;">
+                        </td>
+                        <td><%= product.name %></td>
+                        <td><%= product.price %></td>
+                        <td><a href="/cart/deleteFromCart?userId=<%= user._id %>&productId=<%= product._id %>">Delete</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <% cart.products.forEach(product => { %>
-                        <tr>
-                            <td>
-                                <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" style="width: 100px; height: auto;">
-                            </td>
-                            <td><%= product.name %></td>
-                            <td><%= product.price %></td>
-                            <td><a href="/cart/deleteFromCart?userId=<%= user._id %>&productId=<%= product._id %>">Delete</a></td>
-                        </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-        <% } %>
-    </div>
-</main>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
