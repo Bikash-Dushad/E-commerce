@@ -1,0 +1,35 @@
+.orders table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.orders th, .orders td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.orders th {
+    background-color: #f2f2f2;
+}
+
+.orders tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.orders tr:hover {
+    background-color: #f1f1f1;
+}
+
+.orders td ul {
+    padding-left: 20px;
+}
+
+.orders td form {
+    display: inline;
+}
+
+.orders td select, .orders td button {
+    margin-top: 5px;
+}

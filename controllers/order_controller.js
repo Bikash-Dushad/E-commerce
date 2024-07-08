@@ -25,7 +25,7 @@ module.exports.createOrder = async (req, res) => {
         // Find the user's cart
         const cart = await userCart.findOne({ user: userId }).populate('products');
 
-        if (!cart) {
+        if (!cart || cart.products.length === 0) {
             console.log("cart is empty ")
             return res.redirect('back')
         }

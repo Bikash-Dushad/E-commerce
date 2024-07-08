@@ -4,7 +4,7 @@
 <h1>Welcome to Cart</h1>
 
 <div class="cart-items">
-    <% if (!cart) { %>
+    <% if (cart.products.length === 0) { %>
         <p>Your cart is empty.</p>
     <% } else { %>
         <table>
