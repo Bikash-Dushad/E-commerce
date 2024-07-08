@@ -20,7 +20,7 @@
 }
 
 .cart-items table th {
-    background-color: #007bff;
+    background-color: #333;
     color: white;
     font-weight: bold;
 }
@@ -41,7 +41,7 @@
 
 .cart-items a {
     text-decoration: none;
-    color: #007bff;
+    color: #333;
     font-weight: bold;
 }
 

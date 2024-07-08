@@ -1,12 +1,8 @@
-const allProducts = document.getElementById('allProducts');
+async function fetchAllProducts() {
+    try {
+        const response = await fetch('http://localhost:7000/products/getAllProduct', { method: 'GET' });
+        const data = await response.json();
 
-allProducts.addEventListener('click', async () => {
-    console.log('hello into the assets folder');
-    fetch('http://localhost:7000/products/getAllProduct', {
-        method: 'GET'
-    })
-    .then(response => response.json())
-    .then(data => {
         if (data.success) {
             const productsContainer = document.getElementById('productsContainer');
             productsContainer.innerHTML = ''; // Clearing any existing content
@@ -42,8 +38,9 @@ allProducts.addEventListener('click', async () => {
                         <td>${product.desc}</td>
                         <td>$${product.price}</td>
                         <td>${product.sizes.join(', ')}</td>
-                        <td><a href="/products/updateProductPage/${product._id}">Update</a> 
-                        <a href="/products/deleteProduct/${product._id}">Delete</a>
+                        <td>
+                            <a href="/products/updateProductPage/${product._id}">Update</a>
+                            <a href="/products/deleteProduct/${product._id}">Delete</a>
                         </td>
                     </tr>
                 `;
@@ -52,6 +49,10 @@ allProducts.addEventListener('click', async () => {
         } else {
             console.log('Failed to fetch products');
         }
-    })
-    .catch(error => console.error('Error:', error));
-});
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// Call the fetch function when the page loads
+document.addEventListener('DOMContentLoaded', fetchAllProducts);

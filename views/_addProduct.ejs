@@ -1,9 +1,17 @@
 <link rel="stylesheet" href="/css/add_products.css">
 
-<button id="showFormButton">Add Product</button>
-    
-<div id="productForm">
-    <h1>Add Product</h1>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/admin/adminPage">All Products</a></li>
+            <li><a href="/products/addProductPage">Add Products</a></li>
+            <li><a href="/admin/orders">All orders</a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Add Product</h1> 
+<div class="productForm">
     <form action="/products/addProduct" method="post" enctype="multipart/form-data">
         <table>
             <tr>
@@ -33,5 +41,3 @@
         </table>
     </form>
 </div>
-
-<script src="/js/add_products.js"></script>

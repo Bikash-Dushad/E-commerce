@@ -1,6 +1,12 @@
 const Product = require('../models/product')
 const fs = require("fs")
 
+module.exports.addProductPage = async (req, res) => {
+    return res.render('_addProduct', {
+        title: "Add Product"
+    });
+};
+
 module.exports.addProducts = async (req, res) => {
     try {
         console.log('File:', req.file);
@@ -15,18 +21,19 @@ module.exports.addProducts = async (req, res) => {
             image: image_file,
             category,
         };
-         // Ensure sizes is stored only if selected
-         if (sizes) {
+        // Ensure sizes is stored only if selected
+        if (sizes) {
             productData.sizes = Array.isArray(sizes) ? sizes : [sizes];
         }
 
         const product = await Product.create(productData);
-        return res.redirect('back')
+        return res.redirect('back');
     } catch (error) {
         console.log(error);
-        return res.redirect('back')
+        return res.redirect('back');
     }
 };
+
 
 // All product
 module.exports.getAllProducts = async (req, res)=>{

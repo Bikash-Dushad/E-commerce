@@ -33,8 +33,8 @@
                 <% }); %>
                 <tr>
                     <td colspan="2"><strong>Total Price:</strong></td>
-                    <td colspan="1"><strong><%= totalPrice %></strong></td>
-                    <td colspan="1"><form action="/orders/placeOrder" method="post" style="display:inline;">
+                    <td colspan=""><strong><%= totalPrice %></strong></td>
+                    <td colspan=""><form action="/orders/placeOrder" method="post" style="display:inline;">
                         <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
                         <button type="submit">Order</button>
                     </form></td>

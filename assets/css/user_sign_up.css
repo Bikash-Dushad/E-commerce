@@ -1,7 +1,5 @@
 body {
     margin: 0;
-    background-image: url(../img/clock.jpg);
-    background-repeat: no-repeat;
     background-size: 110vh 105vh;
 }
 
@@ -24,8 +22,6 @@ body {
 input{
 	width: 60%;
 	height: 20px;
-	/* background: #e0dede; */
-	/* justify-content: center; */
 	display: flex;
 	margin: 10px auto;
 	padding: 10px;
