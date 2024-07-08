@@ -4,7 +4,7 @@
 <h1>Welcome to Cart</h1>
 
 <div class="cart-items">
-    <% if (cart.products.length === 0) { %>
+    <% if (!cart) { %>
         <p>Your cart is empty.</p>
     <% } else { %>
         <table>
@@ -19,7 +19,6 @@
             <tbody>
                 <% let totalPrice = 0; %>
                 <% cart.products.forEach(product => { %>
-                    <% totalPrice += product.price; %>
                     <tr>
                         <td>
                             <img src="/uploads/<%= product.image %>" alt="<%= product.name %>" style="width: 100px; height: auto;">
@@ -30,16 +29,18 @@
                             <a href="/cart/deleteFromCart?userId=<%= user._id %>&productId=<%= product._id %>">Delete</a>
                         </td>
                     </tr>
+                    <% totalPrice += Number(product.price); %>
                 <% }); %>
                 <tr>
                     <td colspan="2"><strong>Total Price:</strong></td>
-                    <td colspan="2"><strong><%= totalPrice %></strong></td>
+                    <td colspan="1"><strong><%= totalPrice %></strong></td>
+                    <td colspan="1"><form action="/orders/placeOrder" method="post" style="display:inline;">
+                        <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
+                        <button type="submit">Order</button>
+                    </form></td>
                 </tr>
             </tbody>
         </table>
-        <form action="/orders/placeOrder" method="post" style="display:inline;">
-            <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
-            <button type="submit">Order</button>
-        </form>
+        
     <% } %>
 </div>

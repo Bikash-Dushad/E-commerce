@@ -1,6 +1,8 @@
 // require express
 const express = require('express');
 const port = 7000;
+const dotenv = require('dotenv');
+dotenv.config();
 const app = express();
 // const cookieparser = require('cookie-parser')
 const expressLayouts = require('express-ejs-layouts');
@@ -45,7 +47,7 @@ app.use(session({
     },
     store: MongoStore.create(
         {
-            mongoUrl:'mongodb+srv://himadrinayak:12345@cluster0.h7n86ah.mongodb.net/habit-tracker?retryWrites=true&w=majority',
+            mongoUrl:process.env.MONGO_URL,
             autoRemover : 'disabled'
         },
         function(err){
