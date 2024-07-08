@@ -3,6 +3,7 @@
     <%- include('_header'); %>
 </header>
 <main>
+    <% if (user) { %>
     <div class="product-details">
         <img src="/uploads/<%= product.image %>" alt="<%= product.name %>">
         <div class="pcsd">
@@ -14,4 +15,16 @@
             <a href="/cart/addToCart?id=<%= product._id %>&user=<%= user._id %>">Add To Cart</a>
         </div>
     </div>
+    <% } else { %>
+        <div class="product-details">
+            <img src="/uploads/<%= product.image %>" alt="<%= product.name %>">
+            <div class="pcsd">
+                <h1><%= product.name %></h1>
+                <p>Price: <%= product.price %></p>
+                <p>category: <%= product.category %></p>
+                <p>Size <%= product.sizes %></p>
+                <p>Description: <%= product.desc %></p>
+            </div>
+        </div>    
+        <% } %>
 </main>

@@ -4,23 +4,12 @@ const Product = require('../models/product');
 
 // this function takes user to home
 module.exports.home = async function(req, res) {
-    if(req.user){
-        let product = await Product.find({}); 
-        
-        return res.render('home', {
-            title : "Home",
-            product : product,
-        })
-    }else{
-        return res.render('home', {
-            title: "Home"
-        });
-    }
-}
+    let product = await Product.find({});
+    let user = req.user; // Assuming you are using Passport.js for authentication
 
-
-module.exports.notFound = async function(req, res) {
-    return res.render('404', {
-        title :'Not Found!'
+    return res.render('home', {
+        title: "Home",
+        product: product,
+        user: user
     });
 }

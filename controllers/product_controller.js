@@ -54,7 +54,7 @@ module.exports.getAllProducts = async (req, res)=>{
 // Controller function to get single product details
 module.exports.getSingleProductDetails = async (req, res) => {
     const productId = req.params.id;
-
+    let user = req.user;
     try {
         // Fetch the product details by ID
         const product = await Product.findById(productId);
@@ -66,6 +66,7 @@ module.exports.getSingleProductDetails = async (req, res) => {
         // Render a view to display product details (you can customize this part based on your frontend setup)
         res.render('product_details', { 
             product,
+            user,
             title: "Product details",
          });
     } catch (error) {

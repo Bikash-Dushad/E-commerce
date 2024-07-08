@@ -4,8 +4,7 @@
 <%- include('_header'); %>
 
 <main>
-    <% if(!locals.user) { %>
-    <% }else if(locals.user) { %>
+    <% if (user) { %>
         <div class="search-container">
             <input type="text" placeholder="Search" />
             <button>Search</button>
@@ -22,6 +21,22 @@
                 </div>
             <% }); %>
         </div>
+    <% } else { %>
+        <div class="search-container">
+            <input type="text" placeholder="Search" />
+            <button>Search</button>
+        </div>
+        <div class="products-grid">
+            <% product.forEach(product => { %>
+                <div class="product-card">
+                    <a href="/products/singleProductDetails/<%= product._id %>">
+                    <img src="/uploads/<%= product.image %>" alt="<%= product.name %>">
+                    <p><%= product.name %></p>
+                    <p><%= product.price %></p>
+                    </a>
+                </div>
+            <% }); %>
+        </div>
+    <% } %>
 
-    <%} %>
 </main>

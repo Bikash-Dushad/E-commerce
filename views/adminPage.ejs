@@ -2,23 +2,17 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="/css/all_products.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>admin</title>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/admin/adminPage">All Products</a></li>
-                <li><a href="/products/addProductPage">Add Products</a></li>
-                <li><a href="/admin/orders">All orders</a></li>
-            </ul>
-        </nav>
-    </header>
+    <%- include('_admin_header'); %>
+    <h1>All Products</h1>
     <div id="productsContainer"></div>
-    
+
     <script src="/js/products.js"></script>
 
 </body>

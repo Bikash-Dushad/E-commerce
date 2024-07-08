@@ -1,3 +1,8 @@
+.orders {
+    width: 70%;
+    margin: 0 auto;
+}
+
 .orders table {
     width: 100%;
     border-collapse: collapse;
@@ -11,7 +16,9 @@
 }
 
 .orders th {
-    background-color: #f2f2f2;
+    background-color: #333;
+    color: white;
+    font-weight: bold;
 }
 
 .orders tr:nth-child(even) {
@@ -32,4 +39,7 @@
 
 .orders td select, .orders td button {
     margin-top: 5px;
+    background-color: #333;
+    color: white;
+    font-weight: bold;
 }
